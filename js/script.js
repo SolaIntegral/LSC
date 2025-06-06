@@ -127,133 +127,154 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    // ナビゲーションメニューの制御
-    const menuButton = document.querySelector('.menu-button');
-    const nav = document.querySelector('.nav');
-    
-    if (menuButton && nav) {
-        menuButton.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuButton.classList.toggle('active');
-        });
+// モバイルナビゲーション
+const navToggle = document.querySelector('.nav__toggle');
+const navMenu = document.querySelector('.nav__menu');
+const navLinks = document.querySelectorAll('.nav__link');
+const header = document.querySelector('.nav');
 
-        // メニュー項目のクリックでメニューを閉じる
-        const navLinks = nav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuButton.classList.remove('active');
-            });
-        });
-    }
+// タッチイベントのサポートを確認
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // スクロールアニメーション
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+// ナビゲーションメニューの開閉
+function toggleMenu() {
+    navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+}
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // アニメーション対象の要素を監視
-    document.querySelectorAll('.animate-on-scroll').forEach(element => {
-        observer.observe(element);
+// タッチデバイスでのメニュー開閉
+if (isTouchDevice) {
+    navToggle.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        toggleMenu();
     });
+} else {
+    navToggle.addEventListener('click', toggleMenu);
+}
 
-    // スムーズスクロール
+// メニューリンクのクリックでメニューを閉じる
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
+// 画面外クリックでメニューを閉じる
+document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && !e.target.closest('.nav')) {
+        toggleMenu();
+    }
+});
+
+// スクロール時のヘッダー表示制御
+let lastScrollTop = 0;
+const scrollThreshold = 100;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+        // 下スクロール時
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        // 上スクロール時
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, { passive: true });
+
+// タッチデバイスでのスムーズスクロール
+if (isTouchDevice) {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('touchstart', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const headerOffset = 80; // ヘッダーの高さ
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
+}
 
-    // ページトップへ戻るボタン
-    const createBackToTopButton = () => {
-        const button = document.createElement('button');
-        button.className = 'back-to-top';
-        button.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        button.setAttribute('aria-label', 'ページトップへ戻る');
-        document.body.appendChild(button);
-
-        const showButton = () => {
-            if (window.pageYOffset > 300) {
-                button.classList.add('show');
-            } else {
-                button.classList.remove('show');
-            }
-        };
-
-        const scrollToTop = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        window.addEventListener('scroll', showButton);
-        button.addEventListener('click', scrollToTop);
-    };
-
-    createBackToTopButton();
-
-    // 画像の遅延読み込み
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+// 画像の遅延読み込み
+document.addEventListener('DOMContentLoaded', () => {
+    const lazyImages = document.querySelectorAll('img[data-src]');
     
-    if ('loading' in HTMLImageElement.prototype) {
-        // ブラウザがネイティブの遅延読み込みをサポートしている場合
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-        });
-    } else {
-        // フォールバック: Intersection Observerを使用
+    if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
                     img.src = img.dataset.src;
-                    imageObserver.unobserve(img);
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
                 }
             });
         });
 
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // IntersectionObserverがサポートされていない場合のフォールバック
         lazyImages.forEach(img => {
-            imageObserver.observe(img);
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
         });
     }
+});
 
-    // タッチデバイスでのホバーエフェクト対応
-    if ('ontouchstart' in window) {
-        document.querySelectorAll('.hover-effect').forEach(element => {
-            element.addEventListener('touchstart', () => {
-                element.classList.add('touch-hover');
-            });
+// パフォーマンス最適化
+if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+        // 非同期で実行可能な処理
+        const deferredScripts = document.querySelectorAll('script[defer]');
+        deferredScripts.forEach(script => {
+            if (script.dataset.src) {
+                script.src = script.dataset.src;
+            }
+        });
+    });
+}
 
-            element.addEventListener('touchend', () => {
-                element.classList.remove('touch-hover');
+// タッチデバイスでのホバー効果の無効化
+if (isTouchDevice) {
+    document.querySelectorAll('.card, .button, .nav__link').forEach(element => {
+        element.addEventListener('touchstart', () => {}, { passive: true });
+    });
+}
+
+// フォームのバリデーション
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            const invalidInputs = form.querySelectorAll(':invalid');
+            invalidInputs.forEach(input => {
+                input.classList.add('invalid');
             });
+        }
+    });
+});
+
+// 入力フィールドのバリデーション
+const inputs = document.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        input.classList.remove('invalid');
+    });
+    
+    // モバイルでの入力最適化
+    if (isTouchDevice) {
+        input.addEventListener('focus', () => {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: input.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }, 300);
         });
     }
-
-    // ページ読み込み完了時のアニメーション
-    document.body.classList.add('loaded');
 }); 
