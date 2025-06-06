@@ -43,182 +43,232 @@
         </div>
     </section>
 
-    <!-- チーム一覧 -->
-    <section class="section">
+    <!-- チーム紹介セクション -->
+    <section class="teams">
         <div class="container">
-            <h2 class="section__title">チーム紹介</h2>
-            <p class="section__subtitle">8つのチームで構成されるLinkedIn Student Club</p>
-            
-            <div class="team-grid">
-                <!-- チームA -->
-                <div class="team-card" data-team="team-a">
-                    <h3>チームA</h3>
-                    <p class="team-description">
-                        イベント企画・運営を担当するチームです。Career Week 2025の全体設計から、各セッションの企画、当日の運営までを一貫して行います。参加者の体験を最重視し、価値ある学びの場を提供します。
-                    </p>
-                    <div class="team-members">
-                        <div class="team-member" data-member="nishibori-rei">
-                            <img src="images/members/default.jpg" alt="西堀怜" class="team-member__image">
-                            <div class="team-member__info">
-                                <h4>西堀怜</h4>
-                                <p class="team-member__role">Team A Leader</p>
-                                <p class="team-member__university">早稲田大学 政治経済学部 4年</p>
-                            </div>
-                        </div>
-                        <div class="team-member" data-member="yamamoto-ayumi">
-                            <img src="images/members/default.jpg" alt="山本歩実" class="team-member__image">
-                            <div class="team-member__info">
-                                <h4>山本歩実</h4>
-                                <p class="team-member__role">Team A Sub-Leader</p>
-                                <p class="team-member__university">早稲田大学 政治経済学部 4年</p>
-                            </div>
-                        </div>
+            <h2 class="section-title">チーム紹介</h2>
+            <p class="section-subtitle">LinkedIn Student Clubの組織体制</p>
+
+            <!-- Team A -->
+            <div class="team-card" data-team="team-a">
+                <h3>Team A</h3>
+                <p class="team-description">Career Week 2025の企画・運営を担当。参加者の体験を最大化するイベント設計を行います。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="rei-nishibori">
+                        <img src="images/members/default.jpg" alt="西堀怜">
+                        <h4>西堀怜</h4>
+                    </div>
+                    <div class="team-member" data-member="ayumi-yamamoto">
+                        <img src="images/members/default.jpg" alt="山本歩実">
+                        <h4>山本歩実</h4>
+                    </div>
+                    <div class="team-member" data-member="yuki-tanaka">
+                        <img src="images/members/default.jpg" alt="田中優希">
+                        <h4>田中優希</h4>
+                    </div>
+                    <div class="team-member" data-member="haruka-sato">
+                        <img src="images/members/default.jpg" alt="佐藤遥">
+                        <h4>佐藤遥</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームB -->
-                <div class="team-card">
-                    <h3>チームB</h3>
-                    <p class="team-description">
-                        企業との連携を担当するチームです。Career Week 2025の参加企業の開拓、関係構築、プログラムの調整を行います。企業と学生をつなぐ架け橋として、双方にとって価値ある関係性を構築します。
-                    </p>
-                    <div class="team-members">
-                        <div class="team-member">
-                            <img src="images/members/default.jpg" alt="山田太郎" class="team-member__image">
-                            <div class="team-member__info">
-                                <h4>山田太郎</h4>
-                                <p class="team-member__role">Team B Leader</p>
-                                <p class="team-member__university">東京大学 工学部 4年</p>
-                            </div>
-                        </div>
+            <!-- Team B -->
+            <div class="team-card" data-team="team-b">
+                <h3>Team B</h3>
+                <p class="team-description">企業とのパートナーシップ構築とプログラム調整を担当。企業と学生をつなぐ架け橋となります。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="takumi-suzuki">
+                        <img src="images/members/default.jpg" alt="鈴木拓海">
+                        <h4>鈴木拓海</h4>
+                    </div>
+                    <div class="team-member" data-member="yui-watanabe">
+                        <img src="images/members/default.jpg" alt="渡辺結衣">
+                        <h4>渡辺結衣</h4>
+                    </div>
+                    <div class="team-member" data-member="ryota-kobayashi">
+                        <img src="images/members/default.jpg" alt="小林亮太">
+                        <h4>小林亮太</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームC -->
-                <div class="team-card">
-                    <h3>チームC</h3>
-                    <p class="team-description">
-                        広報・マーケティングを担当するチームです。Career Week 2025の認知度向上、参加者募集、SNS運用を行います。効果的な情報発信を通じて、多くの学生に価値ある機会を提供します。
-                    </p>
-                    <div class="team-members">
-                        <div class="team-member">
-                            <img src="images/members/default.jpg" alt="佐藤花子" class="team-member__image">
-                            <div class="team-member__info">
-                                <h4>佐藤花子</h4>
-                                <p class="team-member__role">Team C Leader</p>
-                                <p class="team-member__university">慶應義塾大学 商学部 4年</p>
-                            </div>
-                        </div>
+            <!-- Team C -->
+            <div class="team-card" data-team="team-c">
+                <h3>Team C</h3>
+                <p class="team-description">広報・マーケティングを担当。SNS運用と参加者募集の戦略を立案します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="mio-takahashi">
+                        <img src="images/members/default.jpg" alt="高橋美桜">
+                        <h4>高橋美桜</h4>
+                    </div>
+                    <div class="team-member" data-member="kento-nakamura">
+                        <img src="images/members/default.jpg" alt="中村健斗">
+                        <h4>中村健斗</h4>
+                    </div>
+                    <div class="team-member" data-member="sakura-yamada">
+                        <img src="images/members/default.jpg" alt="山田さくら">
+                        <h4>山田さくら</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームE -->
-                <div class="team-card">
-                    <h3>チームE</h3>
-                    <p class="team-description">
-                    <p>グローバル展開・国際交流を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="古賀拓也" class="member__image">
-                            <div class="member__info">
-                                <h4>古賀 拓也</h4>
-                                <p>リーダー</p>
-                                <p>日本大学 経済学部 経済学科</p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="デミーザアンドリュー" class="member__image">
-                            <div class="member__info">
-                                <h4>デミーザ アンドリュー</h4>
-                                <p>サブリーダー</p>
-                                <p>University of Massachusetts Boston Business Marketing</p>
-                            </div>
-                        </div>
-                        <!-- 他のメンバーも同様に追加 -->
+            <!-- Team E -->
+            <div class="team-card" data-team="team-e">
+                <h3>Team E</h3>
+                <p class="team-description">イベントの運営サポートを担当。当日の進行と参加者サポートを円滑に行います。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="yuto-ito">
+                        <img src="images/members/default.jpg" alt="伊藤優斗">
+                        <h4>伊藤優斗</h4>
+                    </div>
+                    <div class="team-member" data-member="hana-kato">
+                        <img src="images/members/default.jpg" alt="加藤花">
+                        <h4>加藤花</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームF -->
-                <div class="team-card">
-                    <h3>チームF</h3>
-                    <p>マーケティング・広報を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="古村賢" class="member__image">
-                            <div class="member__info">
-                                <h4>古村 賢</h4>
-                                <p>リーダー</p>
-                                <p>早稲田大学 商学部 商学科</p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="丸山大智" class="member__image">
-                            <div class="member__info">
-                                <h4>丸山 大智</h4>
-                                <p>サブリーダー</p>
-                                <p>早稲田大学 人間科学部 健康福祉科学科</p>
-                            </div>
-                        </div>
-                        <!-- 他のメンバーも同様に追加 -->
+            <!-- Team F -->
+            <div class="team-card" data-team="team-f">
+                <h3>Team F</h3>
+                <p class="team-description">コンテンツ制作を担当。イベントの記録と発信を担います。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="daiki-saito">
+                        <img src="images/members/default.jpg" alt="斎藤大輝">
+                        <h4>斎藤大輝</h4>
+                    </div>
+                    <div class="team-member" data-member="mika-yoshida">
+                        <img src="images/members/default.jpg" alt="吉田美香">
+                        <h4>吉田美香</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームG -->
-                <div class="team-card">
-                    <h3>チームG</h3>
-                    <p>新規事業開発・イノベーションを担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="アンソニースカーイラン敬斗" class="member__image">
-                            <div class="member__info">
-                                <h4>アンソニー スカーイラン敬斗</h4>
-                                <p>リーダー</p>
-                                <p>東洋大学 国際学部 グローバル・イノベーション学科</p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="寺崎希海" class="member__image">
-                            <div class="member__info">
-                                <h4>寺崎 希海</h4>
-                                <p>サブリーダー</p>
-                                <p>慶應義塾大学 薬学部 薬学科</p>
-                            </div>
-                        </div>
-                        <!-- 他のメンバーも同様に追加 -->
+            <!-- Team G -->
+            <div class="team-card" data-team="team-g">
+                <h3>Team G</h3>
+                <p class="team-description">会場設営とロジスティクスを担当。快適な環境づくりを実現します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="shota-tanaka">
+                        <img src="images/members/default.jpg" alt="田中翔太">
+                        <h4>田中翔太</h4>
+                    </div>
+                    <div class="team-member" data-member="yuka-suzuki">
+                        <img src="images/members/default.jpg" alt="鈴木優香">
+                        <h4>鈴木優香</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- チームH -->
-                <div class="team-card">
-                    <h3>チームH</h3>
-                    <p>地方創生・地域連携を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="山中虹輝" class="member__image">
-                            <div class="member__info">
-                                <h4>山中 虹輝</h4>
-                                <p>リーダー</p>
-                                <p>東洋大学 国際学部 グローバルイノベーション学科</p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="鈴木大輔" class="member__image">
-                            <div class="member__info">
-                                <h4>鈴木 大輔</h4>
-                                <p>サブリーダー</p>
-                                <p>國學院大學 観光まちづくり学部 観光まちづくり学科</p>
-                            </div>
-                        </div>
-                        <!-- 他のメンバーも同様に追加 -->
+            <!-- Team H -->
+            <div class="team-card" data-team="team-h">
+                <h3>Team H</h3>
+                <p class="team-description">技術サポートを担当。オンライン配信とシステム運用を支えます。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="ryo-watanabe">
+                        <img src="images/members/default.jpg" alt="渡辺亮">
+                        <h4>渡辺亮</h4>
+                    </div>
+                    <div class="team-member" data-member="mai-tanaka">
+                        <img src="images/members/default.jpg" alt="田中舞">
+                        <h4>田中舞</h4>
                     </div>
                 </div>
+            </div>
 
-                <!-- その他のチーム -->
-                <div class="team-card">
-                    <h3>その他のチーム</h3>
-                    <p>PMO、SNS、アカウンティング、デザイン、地方、海外など</p>
-                    <div class="member-list">
-                        <!-- 各チームのメンバーを追加 -->
+            <!-- PMO -->
+            <div class="team-card" data-team="pmo">
+                <h3>PMO</h3>
+                <p class="team-description">プロジェクト全体の管理と調整を担当。各チームの連携をサポートします。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="yuki-sato">
+                        <img src="images/members/default.jpg" alt="佐藤優希">
+                        <h4>佐藤優希</h4>
+                    </div>
+                    <div class="team-member" data-member="takumi-yamamoto">
+                        <img src="images/members/default.jpg" alt="山本拓海">
+                        <h4>山本拓海</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SNS -->
+            <div class="team-card" data-team="sns">
+                <h3>SNS</h3>
+                <p class="team-description">SNS戦略と運用を担当。効果的な情報発信を実現します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="haruka-tanaka">
+                        <img src="images/members/default.jpg" alt="田中遥">
+                        <h4>田中遥</h4>
+                    </div>
+                    <div class="team-member" data-member="kento-suzuki">
+                        <img src="images/members/default.jpg" alt="鈴木健斗">
+                        <h4>鈴木健斗</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accounting -->
+            <div class="team-card" data-team="accounting">
+                <h3>Accounting</h3>
+                <p class="team-description">予算管理と会計を担当。透明性のある財務運営を実現します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="yui-watanabe">
+                        <img src="images/members/default.jpg" alt="渡辺結衣">
+                        <h4>渡辺結衣</h4>
+                    </div>
+                    <div class="team-member" data-member="ryota-kobayashi">
+                        <img src="images/members/default.jpg" alt="小林亮太">
+                        <h4>小林亮太</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design -->
+            <div class="team-card" data-team="design">
+                <h3>Design</h3>
+                <p class="team-description">ビジュアルデザインを担当。ブランドイメージの統一を図ります。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="mio-takahashi">
+                        <img src="images/members/default.jpg" alt="高橋美桜">
+                        <h4>高橋美桜</h4>
+                    </div>
+                    <div class="team-member" data-member="kento-nakamura">
+                        <img src="images/members/default.jpg" alt="中村健斗">
+                        <h4>中村健斗</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local -->
+            <div class="team-card" data-team="local">
+                <h3>Local</h3>
+                <p class="team-description">地域連携を担当。地域企業との関係構築を推進します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="sakura-yamada">
+                        <img src="images/members/default.jpg" alt="山田さくら">
+                        <h4>山田さくら</h4>
+                    </div>
+                    <div class="team-member" data-member="yuto-ito">
+                        <img src="images/members/default.jpg" alt="伊藤優斗">
+                        <h4>伊藤優斗</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overseas -->
+            <div class="team-card" data-team="overseas">
+                <h3>Overseas</h3>
+                <p class="team-description">海外連携を担当。グローバルなネットワークを構築します。</p>
+                <div class="team-members">
+                    <div class="team-member" data-member="hana-kato">
+                        <img src="images/members/default.jpg" alt="加藤花">
+                        <h4>加藤花</h4>
+                    </div>
+                    <div class="team-member" data-member="daiki-saito">
+                        <img src="images/members/default.jpg" alt="斎藤大輝">
+                        <h4>斎藤大輝</h4>
                     </div>
                 </div>
             </div>

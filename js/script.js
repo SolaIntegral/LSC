@@ -127,44 +127,28 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
     });
 });
 
-// モバイルナビゲーション
+// ハンバーガーメニューの制御
 const navToggle = document.querySelector('.nav__toggle');
 const navMenu = document.querySelector('.nav__menu');
-const navLinks = document.querySelectorAll('.nav__link');
-const mainHeader = document.querySelector('.nav');
 
-// タッチイベントのサポートを確認
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('nav__toggle--active');
+    navMenu.classList.toggle('nav__menu--active');
+});
 
-// ナビゲーションメニューの開閉
-function toggleMenu() {
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-}
-
-// タッチデバイスでのメニュー開閉
-if (isTouchDevice) {
-    navToggle.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        toggleMenu();
-    });
-} else {
-    navToggle.addEventListener('click', toggleMenu);
-}
-
-// メニューリンクのクリックでメニューを閉じる
-navLinks.forEach(link => {
+// メニューリンクをクリックしたときにメニューを閉じる
+document.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-            toggleMenu();
-        }
+        navToggle.classList.remove('nav__toggle--active');
+        navMenu.classList.remove('nav__menu--active');
     });
 });
 
-// 画面外クリックでメニューを閉じる
+// 画面外をクリックしたときにメニューを閉じる
 document.addEventListener('click', (e) => {
-    if (navMenu.classList.contains('active') && !e.target.closest('.nav')) {
-        toggleMenu();
+    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        navToggle.classList.remove('nav__toggle--active');
+        navMenu.classList.remove('nav__menu--active');
     }
 });
 
