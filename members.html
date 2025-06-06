@@ -5,110 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メンバー紹介 - LinkedIn Student Club 3期生</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__logo">
-                <h1>LinkedIn Student Club 3期生</h1>
-            </div>
-            <nav class="header__nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">ホーム</a></li>
-                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
-                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
-                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
-                </ul>
-            </nav>
-            <button class="header__menu-button" aria-label="メニュー">
+    <!-- ナビゲーション -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">LSC 3rd</a>
+            <button class="menu-button" aria-label="メニュー">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <ul class="nav__list">
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="career_week_2025.html">Career Week 2025</a></li>
+                <li><a href="groups.html">グループ紹介</a></li>
+                <li><a href="members.html" class="active">メンバー紹介</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="members-hero">
-            <div class="members-hero__content">
-                <h2 class="members-hero__title">メンバー紹介</h2>
-                <p class="members-hero__subtitle">個性豊かなメンバーの活躍</p>
-            </div>
-        </section>
+    <!-- ヒーローセクション -->
+    <section class="hero hero--members">
+        <div class="hero__content">
+            <h1 class="hero__title">メンバー紹介</h1>
+            <p class="hero__subtitle">LinkedIn Student Club 3期生のメンバー</p>
+        </div>
+    </section>
 
-        <section class="members-search">
-            <div class="members-search__container">
-                <div class="search-box">
-                    <input type="text" id="memberSearch" placeholder="メンバーを検索..." class="search-box__input">
+    <!-- 検索・フィルター -->
+    <section class="members-filter">
+        <div class="container">
+            <div class="members-filter__content">
+                <div class="members-filter__search">
+                    <input type="text" id="searchInput" placeholder="名前、スキル、経歴で検索..." class="members-filter__input">
+                    <i class="fas fa-search members-filter__icon"></i>
                 </div>
-                <div class="filter-box">
-                    <select id="groupFilter" class="filter-box__select">
-                        <option value="">全てのグループ</option>
-                        <option value="イベント企画">イベント企画グループ</option>
-                        <option value="マーケティング">マーケティンググループ</option>
-                        <option value="企業連携">企業連携グループ</option>
-                        <option value="コンテンツ制作">コンテンツ制作グループ</option>
+                <div class="members-filter__groups">
+                    <select id="groupFilter" class="members-filter__select">
+                        <option value="">すべてのグループ</option>
+                        <option value="planning">企画グループ</option>
+                        <option value="pr">広報グループ</option>
+                        <option value="operations">運営グループ</option>
+                        <option value="corporate">企業連携グループ</option>
                     </select>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="members-grid">
-            <div class="members-grid__container">
-                <!-- メンバーカードの例（実際のデータに置き換える） -->
-                <div class="member-card" data-group="イベント企画">
+    <!-- メンバー一覧 -->
+    <section class="members">
+        <div class="container">
+            <div class="members__grid">
+                <!-- メンバーカードの例 -->
+                <article class="member-card" data-group="planning">
                     <div class="member-card__image">
-                        <img src="images/placeholder-member.jpg" alt="メンバー1">
+                        <img src="images/members/member1.jpg" alt="山田太郎" loading="lazy">
                     </div>
                     <div class="member-card__content">
-                        <h3 class="member-card__name">山田 太郎</h3>
-                        <p class="member-card__group">イベント企画グループ</p>
+                        <h2 class="member-card__name">山田太郎</h2>
+                        <p class="member-card__group">企画グループ</p>
+                        <p class="member-card__bio">
+                            東京大学工学部4年生。Career Week 2025の全体企画を担当。
+                            学生と企業をつなぐイベントの成功に向けて日々奮闘中。
+                        </p>
                         <div class="member-card__skills">
+                            <span class="skill-tag">プロジェクトマネジメント</span>
                             <span class="skill-tag">イベント企画</span>
-                            <span class="skill-tag">プロジェクト管理</span>
+                            <span class="skill-tag">リーダーシップ</span>
                         </div>
-                        <button class="member-card__toggle">詳細を見る</button>
+                        <a href="https://linkedin.com/in/example" target="_blank" rel="noopener" class="member-card__linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
                     </div>
-                    <div class="member-card__details">
-                        <p class="member-card__bio">イベント企画グループのリーダーとして、Career Week 2025の成功に向けて奮闘中。</p>
-                        <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer" class="member-card__linkedin">LinkedInプロフィール</a>
-                    </div>
-                </div>
+                </article>
 
-                <div class="member-card" data-group="マーケティング">
-                    <div class="member-card__image">
-                        <img src="images/placeholder-member.jpg" alt="メンバー2">
-                    </div>
-                    <div class="member-card__content">
-                        <h3 class="member-card__name">佐藤 花子</h3>
-                        <p class="member-card__group">マーケティンググループ</p>
-                        <div class="member-card__skills">
-                            <span class="skill-tag">SNS運用</span>
-                            <span class="skill-tag">コンテンツ制作</span>
-                        </div>
-                        <button class="member-card__toggle">詳細を見る</button>
-                    </div>
-                    <div class="member-card__details">
-                        <p class="member-card__bio">SNS戦略の立案から実行まで、幅広いマーケティング活動を担当。</p>
-                        <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer" class="member-card__linkedin">LinkedInプロフィール</a>
-                    </div>
-                </div>
-
-                <!-- 他のメンバーカードも同様に追加 -->
+                <!-- 他のメンバーカードも同様の構造で追加 -->
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- メンバー詳細モーダル -->
+    <div class="member-modal" id="memberModal">
+        <div class="member-modal__content">
+            <button class="member-modal__close" aria-label="閉じる">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="member-modal__body">
+                <!-- モーダルの内容はJavaScriptで動的に生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
     <footer class="footer">
-        <div class="footer__container">
+        <div class="container">
             <div class="footer__content">
-                <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生</p>
+                <div class="footer__logo">LSC 3rd</div>
                 <div class="footer__links">
-                    <a href="https://www.linkedin.com/company/linkedin-japan/" target="_blank" rel="noopener noreferrer">LinkedIn Japan</a>
+                    <a href="https://www.linkedin.com/company/linkedin-student-club-japan" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/LSC_Japan" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/lsc_japan" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
+            </div>
+            <div class="footer__copyright">
+                &copy; 2025 LinkedIn Student Club 3期生. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/members.js"></script>
 </body>
 </html> 

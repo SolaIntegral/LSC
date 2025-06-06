@@ -129,18 +129,26 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // ナビゲーションメニューの制御
-    const navToggle = document.querySelector('.nav__toggle');
-    const navMenu = document.querySelector('.nav__menu');
+    const menuButton = document.querySelector('.menu-button');
+    const nav = document.querySelector('.nav');
+    
+    if (menuButton && nav) {
+        menuButton.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuButton.classList.toggle('active');
+        });
 
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', 
-            navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-        );
-    });
+        // メニュー項目のクリックでメニューを閉じる
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuButton.classList.remove('active');
+            });
+        });
+    }
 
     // スクロールアニメーション
-    const animateElements = document.querySelectorAll('.animate');
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -150,52 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    animateElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
+    // アニメーション対象の要素を監視
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
         observer.observe(element);
-    });
-
-    // カウントアップアニメーション
-    const countElements = document.querySelectorAll('[data-count]');
-    
-    const animateCount = (element) => {
-        const target = parseInt(element.getAttribute('data-count'));
-        const duration = 2000; // 2秒
-        const step = target / (duration / 16); // 60fps
-        let current = 0;
-
-        const updateCount = () => {
-            current += step;
-            if (current < target) {
-                element.textContent = Math.floor(current);
-                requestAnimationFrame(updateCount);
-            } else {
-                element.textContent = target;
-            }
-        };
-
-        updateCount();
-    };
-
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCount(entry.target);
-                countObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    countElements.forEach(element => {
-        countObserver.observe(element);
     });
 
     // スムーズスクロール
@@ -204,28 +175,85 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerOffset = 80; // ヘッダーの高さ
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
-                // モバイルメニューを閉じる
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                }
             }
         });
     });
 
-    // タッチデバイスでのホバー効果の制御
-    if ('ontouchstart' in window) {
-        document.querySelectorAll('.card, .button').forEach(element => {
-            element.addEventListener('touchstart', function() {
-                this.classList.add('touch-active');
+    // ページトップへ戻るボタン
+    const createBackToTopButton = () => {
+        const button = document.createElement('button');
+        button.className = 'back-to-top';
+        button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        button.setAttribute('aria-label', 'ページトップへ戻る');
+        document.body.appendChild(button);
+
+        const showButton = () => {
+            if (window.pageYOffset > 300) {
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        };
+
+        const scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-            element.addEventListener('touchend', function() {
-                this.classList.remove('touch-active');
+        };
+
+        window.addEventListener('scroll', showButton);
+        button.addEventListener('click', scrollToTop);
+    };
+
+    createBackToTopButton();
+
+    // 画像の遅延読み込み
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('loading' in HTMLImageElement.prototype) {
+        // ブラウザがネイティブの遅延読み込みをサポートしている場合
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+        });
+    } else {
+        // フォールバック: Intersection Observerを使用
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // タッチデバイスでのホバーエフェクト対応
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.hover-effect').forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.classList.add('touch-hover');
+            });
+
+            element.addEventListener('touchend', () => {
+                element.classList.remove('touch-hover');
             });
         });
     }
+
+    // ページ読み込み完了時のアニメーション
+    document.body.classList.add('loaded');
 }); 
