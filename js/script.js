@@ -57,7 +57,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // スクロールに応じたヘッダーの表示/非表示
 let lastScrollTop = 0;
-const header = document.querySelector('.header');
+const header = document.querySelector('.nav');
 
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
