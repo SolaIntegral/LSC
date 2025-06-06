@@ -125,4 +125,107 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
         details.style.display = isExpanded ? 'none' : 'block';
         button.textContent = isExpanded ? '詳細を見る' : '閉じる';
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ナビゲーションメニューの制御
+    const navToggle = document.querySelector('.nav__toggle');
+    const navMenu = document.querySelector('.nav__menu');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', 
+            navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+        );
+    });
+
+    // スクロールアニメーション
+    const animateElements = document.querySelectorAll('.animate');
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animateElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        observer.observe(element);
+    });
+
+    // カウントアップアニメーション
+    const countElements = document.querySelectorAll('[data-count]');
+    
+    const animateCount = (element) => {
+        const target = parseInt(element.getAttribute('data-count'));
+        const duration = 2000; // 2秒
+        const step = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCount = () => {
+            current += step;
+            if (current < target) {
+                element.textContent = Math.floor(current);
+                requestAnimationFrame(updateCount);
+            } else {
+                element.textContent = target;
+            }
+        };
+
+        updateCount();
+    };
+
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCount(entry.target);
+                countObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    countElements.forEach(element => {
+        countObserver.observe(element);
+    });
+
+    // スムーズスクロール
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // モバイルメニューを閉じる
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    });
+
+    // タッチデバイスでのホバー効果の制御
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.card, .button').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.classList.add('touch-active');
+            });
+            element.addEventListener('touchend', function() {
+                this.classList.remove('touch-active');
+            });
+        });
+    }
 }); 

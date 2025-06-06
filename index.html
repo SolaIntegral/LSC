@@ -5,85 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedIn Student Club 3期生</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__logo">
-                <h1>LinkedIn Student Club 3期生</h1>
-            </div>
-            <nav class="header__nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">ホーム</a></li>
-                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
-                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
-                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
-                </ul>
-            </nav>
-            <button class="header__menu-button" aria-label="メニュー">
+    <!-- ナビゲーション -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="/" class="nav__logo">LSC 3期生</a>
+            <button class="nav__toggle" aria-label="メニュー">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
+                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
+                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero__content">
-                <h2 class="hero__title">LinkedIn Student Club 3期生</h2>
-                <p class="hero__subtitle">学生の可能性を最大限に引き出す</p>
-                <a href="career_week_2025.html" class="hero__cta">LinkedIn Student Career Week 2025を見る</a>
-            </div>
-        </section>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <img src="images/hero/hero-bg.jpg" alt="LinkedIn Student Club 3期生" class="hero__background">
+        <div class="hero__content">
+            <h1 class="hero__title">LinkedIn Student Club 3期生</h1>
+            <p class="hero__subtitle">学生の可能性を最大限に引き出す</p>
+            <a href="#about" class="button">詳しく見る</a>
+        </div>
+    </section>
 
-        <section class="highlights">
-            <div class="highlights__container">
-                <div class="highlight__item">
-                    <span class="highlight__number" data-count="4000">0</span>
-                    <p class="highlight__label">来場者数</p>
+    <!-- ハイライトセクション -->
+    <section class="highlights">
+        <div class="container">
+            <div class="highlights__grid">
+                <div class="highlight-card animate">
+                    <div class="highlight-card__number" data-count="1000">0</div>
+                    <h3 class="highlight-card__title">来場者数</h3>
                 </div>
-                <div class="highlight__item">
-                    <span class="highlight__number" data-count="50">0</span>
-                    <p class="highlight__label">セッション数</p>
+                <div class="highlight-card animate">
+                    <div class="highlight-card__number" data-count="20">0</div>
+                    <h3 class="highlight-card__title">セッション数</h3>
                 </div>
-                <div class="highlight__item">
-                    <span class="highlight__number" data-count="30">0</span>
-                    <p class="highlight__label">参加企業数</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="features__container">
-                <div class="feature__card">
-                    <h3>Career Week 2025</h3>
-                    <p>学生と企業をつなぐ大規模イベント</p>
-                    <a href="career_week_2025.html" class="feature__link">詳細を見る</a>
-                </div>
-                <div class="feature__card">
-                    <h3>グループ活動</h3>
-                    <p>多様な専門性を持つグループの取り組み</p>
-                    <a href="groups.html" class="feature__link">詳細を見る</a>
-                </div>
-                <div class="feature__card">
-                    <h3>メンバー紹介</h3>
-                    <p>個性豊かなメンバーの活躍</p>
-                    <a href="members.html" class="feature__link">詳細を見る</a>
+                <div class="highlight-card animate">
+                    <div class="highlight-card__number" data-count="50">0</div>
+                    <h3 class="highlight-card__title">参加企業数</h3>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- コンテンツセクション -->
+    <section class="content">
+        <div class="container">
+            <div class="grid">
+                <!-- Career Week 2025 -->
+                <div class="card animate">
+                    <h2>Career Week 2025</h2>
+                    <p>学生と企業をつなぐ、最大規模のキャリアイベント</p>
+                    <a href="career_week_2025.html" class="button">詳細を見る</a>
+                </div>
+
+                <!-- グループ紹介 -->
+                <div class="card animate">
+                    <h2>グループ紹介</h2>
+                    <p>各グループの活動内容と成果</p>
+                    <a href="groups.html" class="button">詳細を見る</a>
+                </div>
+
+                <!-- メンバー紹介 -->
+                <div class="card animate">
+                    <h2>メンバー紹介</h2>
+                    <p>LinkedIn Student Club 3期生のメンバー</p>
+                    <a href="members.html" class="button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
     <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__content">
-                <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生</p>
-                <div class="footer__links">
-                    <a href="https://www.linkedin.com/company/linkedin-japan/" target="_blank" rel="noopener noreferrer">LinkedIn Japan</a>
-                </div>
-            </div>
+        <div class="container">
+            <p>&copy; 2024 LinkedIn Student Club 3期生. All rights reserved.</p>
         </div>
     </footer>
 </body>
