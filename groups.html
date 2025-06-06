@@ -3,130 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>グループ紹介 - LinkedIn Student Club 3期生</title>
+    <title>グループ | LinkedIn Student Club 3期生</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__logo">
-                <h1>LinkedIn Student Club 3期生</h1>
-            </div>
-            <nav class="header__nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">ホーム</a></li>
-                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
-                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
-                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
+    <!-- ヘッダー -->
+    <header class="nav">
+        <div class="container">
+            <nav class="nav__container">
+                <a href="/" class="nav__logo">LSC 3期生</a>
+                <button class="nav__toggle" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__menu">
+                    <li><a href="index.html#about" class="nav__link">About</a></li>
+                    <li><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
+                    <li><a href="teams.html" class="nav__link">チーム</a></li>
+                    <li><a href="members.html" class="nav__link">メンバー</a></li>
                 </ul>
             </nav>
-            <button class="header__menu-button" aria-label="メニュー">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <main>
-        <section class="groups-hero">
-            <div class="groups-hero__content">
-                <h2 class="groups-hero__title">グループ紹介</h2>
-                <p class="groups-hero__subtitle">多様な専門性を持つグループの取り組み</p>
-            </div>
-        </section>
-
-        <section class="groups-list">
-            <div class="groups-list__container">
-                <div class="group-card">
-                    <div class="group-card__header">
-                        <h3>イベント企画グループ</h3>
-                    </div>
-                    <div class="group-card__content">
-                        <p class="group-card__description">Career Week 2025の企画・運営を担当。学生と企業をつなぐ大規模イベントの成功に向けて活動しています。</p>
-                        <div class="group-card__details">
-                            <h4>主な取り組み</h4>
-                            <ul>
-                                <li>イベントのコンセプト策定</li>
-                                <li>企業との交渉</li>
-                                <li>プログラムの作成</li>
-                                <li>当日の運営</li>
-                            </ul>
-                        </div>
-                        <button class="group-card__toggle">詳細を見る</button>
-                    </div>
-                </div>
-
-                <div class="group-card">
-                    <div class="group-card__header">
-                        <h3>マーケティンググループ</h3>
-                    </div>
-                    <div class="group-card__content">
-                        <p class="group-card__description">SNS運用、広報活動、コンテンツ制作を担当。LinkedIn Student Clubの認知度向上に貢献しています。</p>
-                        <div class="group-card__details">
-                            <h4>主な取り組み</h4>
-                            <ul>
-                                <li>SNS戦略の立案</li>
-                                <li>コンテンツ制作</li>
-                                <li>広報活動</li>
-                                <li>コミュニティ運営</li>
-                            </ul>
-                        </div>
-                        <button class="group-card__toggle">詳細を見る</button>
-                    </div>
-                </div>
-
-                <div class="group-card">
-                    <div class="group-card__header">
-                        <h3>企業連携グループ</h3>
-                    </div>
-                    <div class="group-card__content">
-                        <p class="group-card__description">企業とのパートナーシップ構築を担当。学生と企業の架け橋として活動しています。</p>
-                        <div class="group-card__details">
-                            <h4>主な取り組み</h4>
-                            <ul>
-                                <li>企業との関係構築</li>
-                                <li>パートナーシップの提案</li>
-                                <li>企業向けイベントの企画</li>
-                                <li>フィードバックの収集</li>
-                            </ul>
-                        </div>
-                        <button class="group-card__toggle">詳細を見る</button>
-                    </div>
-                </div>
-
-                <div class="group-card">
-                    <div class="group-card__header">
-                        <h3>コンテンツ制作グループ</h3>
-                    </div>
-                    <div class="group-card__content">
-                        <p class="group-card__description">動画制作、記事執筆、デザイン制作を担当。質の高いコンテンツを提供しています。</p>
-                        <div class="group-card__details">
-                            <h4>主な取り組み</h4>
-                            <ul>
-                                <li>動画制作</li>
-                                <li>記事執筆</li>
-                                <li>デザイン制作</li>
-                                <li>コンテンツ戦略の立案</li>
-                            </ul>
-                        </div>
-                        <button class="group-card__toggle">詳細を見る</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__content">
-                <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生</p>
-                <div class="footer__links">
-                    <a href="https://www.linkedin.com/company/linkedin-japan/" target="_blank" rel="noopener noreferrer">LinkedIn Japan</a>
-                </div>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero__background">
+            <img src="images/groups/hero.jpg" alt="グループ" data-src="images/groups/hero.jpg">
+        </div>
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title animate-on-scroll">グループ活動</h1>
+                <p class="hero__subtitle animate-on-scroll">LinkedIn Student Club 3期生の多様な活動</p>
             </div>
         </div>
+    </section>
+
+    <!-- グループ一覧 -->
+    <section class="section">
+        <div class="container">
+            <div class="group-grid">
+                <!-- グループA -->
+                <div class="group-card animate-on-scroll">
+                    <div class="group-card__content">
+                        <h2 class="group-card__title">グループA</h2>
+                        <p class="group-card__description">グループAの活動内容をここに記載します。</p>
+                        <div class="group-card__members">
+                            <div class="member">
+                                <img src="images/members/nishibori.jpg" alt="西堀怜" data-src="images/members/nishibori.jpg">
+                                <div class="member__info">
+                                    <h3>西堀怜</h3>
+                                    <p>リーダー</p>
+                                </div>
+                            </div>
+                            <!-- 他のメンバー -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- グループB -->
+                <div class="group-card animate-on-scroll">
+                    <div class="group-card__content">
+                        <h2 class="group-card__title">グループB</h2>
+                        <p class="group-card__description">グループBの活動内容をここに記載します。</p>
+                        <div class="group-card__members">
+                            <div class="member">
+                                <img src="images/members/yamamoto.jpg" alt="山本歩実" data-src="images/members/yamamoto.jpg">
+                                <div class="member__info">
+                                    <h3>山本歩実</h3>
+                                    <p>リーダー</p>
+                                </div>
+                            </div>
+                            <!-- 他のメンバー -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 他のグループ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <a href="/">LSC 3期生</a>
+                </div>
+                <nav class="footer__nav">
+                    <ul>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="career_week_2025.html">Career Week 2025</a></li>
+                        <li><a href="teams.html">チーム</a></li>
+                        <li><a href="members.html">メンバー</a></li>
+                    </ul>
+                </nav>
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/company/linkedin-student-club" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+            <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html> 

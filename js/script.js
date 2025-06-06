@@ -131,7 +131,7 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
 const navToggle = document.querySelector('.nav__toggle');
 const navMenu = document.querySelector('.nav__menu');
 const navLinks = document.querySelectorAll('.nav__link');
-const header = document.querySelector('.nav');
+const mainHeader = document.querySelector('.nav');
 
 // タッチイベントのサポートを確認
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -169,21 +169,21 @@ document.addEventListener('click', (e) => {
 });
 
 // スクロール時のヘッダー表示制御
-let lastScrollTop = 0;
+let currentScrollTop = 0;
 const scrollThreshold = 100;
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     
-    if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+    if (scrollPosition > currentScrollTop && scrollPosition > scrollThreshold) {
         // 下スクロール時
-        header.style.transform = 'translateY(-100%)';
+        mainHeader.style.transform = 'translateY(-100%)';
     } else {
         // 上スクロール時
-        header.style.transform = 'translateY(0)';
+        mainHeader.style.transform = 'translateY(0)';
     }
     
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    currentScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
 }, { passive: true });
 
 // タッチデバイスでのスムーズスクロール
@@ -198,6 +198,233 @@ if (isTouchDevice) {
         });
     });
 }
+
+// スクロールアニメーション
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+};
+
+// カウントアップアニメーション
+const animateCount = (element, target, duration = 2000) => {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const updateCount = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCount);
+        } else {
+            element.textContent = target.toLocaleString();
+        }
+    };
+
+    updateCount();
+};
+
+// 数字のアニメーション
+const animateNumbers = () => {
+    const numberElements = document.querySelectorAll('[data-count]');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.count);
+                animateCount(entry.target, target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    numberElements.forEach(element => {
+        observer.observe(element);
+    });
+};
+
+// カルーセル
+class Carousel {
+    constructor(element) {
+        this.carousel = element;
+        this.items = element.querySelectorAll('.carousel__item');
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+
+        this.init();
+    }
+
+    init() {
+        if (isTouchDevice) {
+            this.carousel.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
+            this.carousel.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: true });
+            this.carousel.addEventListener('touchend', this.handleTouchEnd.bind(this));
+        } else {
+            this.carousel.addEventListener('mouseenter', () => {
+                this.carousel.style.cursor = 'grab';
+            });
+            this.carousel.addEventListener('mousedown', this.handleMouseDown.bind(this));
+            this.carousel.addEventListener('mousemove', this.handleMouseMove.bind(this));
+            this.carousel.addEventListener('mouseup', this.handleMouseUp.bind(this));
+            this.carousel.addEventListener('mouseleave', this.handleMouseUp.bind(this));
+        }
+    }
+
+    handleTouchStart(e) {
+        this.touchStartX = e.touches[0].clientX;
+    }
+
+    handleTouchMove(e) {
+        this.touchEndX = e.touches[0].clientX;
+    }
+
+    handleTouchEnd() {
+        const diff = this.touchStartX - this.touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                this.next();
+            } else {
+                this.prev();
+            }
+        }
+    }
+
+    handleMouseDown(e) {
+        this.isDragging = true;
+        this.startX = e.clientX;
+        this.carousel.style.cursor = 'grabbing';
+    }
+
+    handleMouseMove(e) {
+        if (!this.isDragging) return;
+        const diff = e.clientX - this.startX;
+        this.carousel.style.transform = `translateX(${diff}px)`;
+    }
+
+    handleMouseUp(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.carousel.style.cursor = 'grab';
+        const diff = e.clientX - this.startX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                this.prev();
+            } else {
+                this.next();
+            }
+        } else {
+            this.carousel.style.transform = '';
+        }
+    }
+
+    next() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        this.currentIndex = (this.currentIndex + 1) % this.items.length;
+        this.update();
+    }
+
+    prev() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+        this.update();
+    }
+
+    update() {
+        this.items.forEach((item, index) => {
+            item.style.transform = `translateX(${(index - this.currentIndex) * 100}%)`;
+        });
+        setTimeout(() => {
+            this.isAnimating = false;
+        }, 300);
+    }
+}
+
+// カルーセルの初期化
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => new Carousel(carousel));
+});
+
+// モーダル
+class Modal {
+    constructor(element) {
+        this.modal = element;
+        this.closeButton = element.querySelector('.modal__close');
+        this.content = element.querySelector('.modal__content');
+        this.isOpen = false;
+
+        this.init();
+    }
+
+    init() {
+        this.closeButton.addEventListener('click', () => this.close());
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.close();
+            }
+        });
+    }
+
+    open() {
+        this.isOpen = true;
+        this.modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            this.modal.classList.add('active');
+            this.content.classList.add('active');
+        }, 10);
+    }
+
+    close() {
+        this.isOpen = false;
+        this.modal.classList.remove('active');
+        this.content.classList.remove('active');
+        setTimeout(() => {
+            this.modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
+// モーダルの初期化
+document.addEventListener('DOMContentLoaded', () => {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => new Modal(modal));
+
+    // モーダルを開くトリガーの設定
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = trigger.dataset.modal;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                new Modal(modal).open();
+            }
+        });
+    });
+});
 
 // 画像の遅延読み込み
 document.addEventListener('DOMContentLoaded', () => {
@@ -277,4 +504,10 @@ inputs.forEach(input => {
             }, 300);
         });
     }
+});
+
+// 初期化
+document.addEventListener('DOMContentLoaded', () => {
+    animateOnScroll();
+    animateNumbers();
 }); 

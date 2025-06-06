@@ -3,55 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Student Club 3期生</title>
+    <title>LinkedIn Student Club 3期生 | 未来を切り拓く、若きリーダーたちの情熱と軌跡</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <!-- ナビゲーション -->
-    <nav class="nav">
-        <div class="container nav__container">
-            <a href="/" class="nav__logo">LSC 3期生</a>
-            <button class="nav__toggle" aria-label="メニュー">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav__menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
-                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
-                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
+    <!-- ヘッダー -->
+    <header class="nav">
+        <div class="container">
+            <nav class="nav__container">
+                <a href="/" class="nav__logo">LSC 3期生</a>
+                <button class="nav__toggle" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__menu">
+                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
+                    <li><a href="groups.html" class="nav__link">グループ</a></li>
+                    <li><a href="members.html" class="nav__link">メンバー</a></li>
                 </ul>
-            </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- ヒーローセクション -->
     <section class="hero">
-        <img src="images/hero/hero-bg.jpg" alt="LinkedIn Student Club 3期生" class="hero__background">
-        <div class="hero__content">
-            <h1 class="hero__title">LinkedIn Student Club 3期生</h1>
-            <p class="hero__subtitle">学生の可能性を最大限に引き出す</p>
-            <a href="#about" class="button">詳しく見る</a>
+        <div class="hero__background">
+            <img src="images/hero/hero-bg.jpg" alt="LinkedIn Student Club 3期生" data-src="images/hero/hero-bg.jpg">
+        </div>
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title animate-on-scroll">未来を切り拓く、<br>若きリーダーたちの情熱と軌跡</h1>
+                <p class="hero__subtitle animate-on-scroll">LinkedIn Student Club 3期生の挑戦と成長の記録</p>
+                <a href="#highlights" class="button button--primary animate-on-scroll">実績を見る</a>
+            </div>
         </div>
     </section>
 
     <!-- ハイライトセクション -->
-    <section class="highlights">
+    <section id="highlights" class="highlights">
         <div class="container">
             <div class="highlights__grid">
-                <div class="highlight-card animate">
-                    <div class="highlight-card__number" data-count="1000">0</div>
-                    <h3 class="highlight-card__title">来場者数</h3>
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-card__number" data-count="4000">0</div>
+                    <h3 class="highlight-card__title">Career Week 2025<br>来場者数</h3>
                 </div>
-                <div class="highlight-card animate">
+                <div class="highlight-card animate-on-scroll">
                     <div class="highlight-card__number" data-count="20">0</div>
                     <h3 class="highlight-card__title">セッション数</h3>
                 </div>
-                <div class="highlight-card animate">
+                <div class="highlight-card animate-on-scroll">
                     <div class="highlight-card__number" data-count="50">0</div>
                     <h3 class="highlight-card__title">参加企業数</h3>
                 </div>
@@ -59,29 +64,65 @@
         </div>
     </section>
 
-    <!-- コンテンツセクション -->
+    <!-- メインコンテンツ -->
     <section class="content">
         <div class="container">
             <div class="grid">
                 <!-- Career Week 2025 -->
-                <div class="card animate">
-                    <h2>Career Week 2025</h2>
-                    <p>学生と企業をつなぐ、最大規模のキャリアイベント</p>
-                    <a href="career_week_2025.html" class="button">詳細を見る</a>
+                <div class="card animate-on-scroll">
+                    <div class="card__image">
+                        <img src="images/career-week.jpg" alt="Career Week 2025" data-src="images/career-week.jpg">
+                    </div>
+                    <div class="card__content">
+                        <h2>Career Week 2025</h2>
+                        <p>学生と企業をつなぐ、最大規模のキャリアイベント</p>
+                        <a href="career_week_2025.html" class="button">詳細を見る</a>
+                    </div>
                 </div>
 
                 <!-- グループ紹介 -->
-                <div class="card animate">
-                    <h2>グループ紹介</h2>
-                    <p>各グループの活動内容と成果</p>
-                    <a href="groups.html" class="button">詳細を見る</a>
+                <div class="card animate-on-scroll">
+                    <div class="card__image">
+                        <img src="images/groups.jpg" alt="グループ活動" data-src="images/groups.jpg">
+                    </div>
+                    <div class="card__content">
+                        <h2>グループ活動</h2>
+                        <p>各グループの専門性と連携による成果</p>
+                        <a href="groups.html" class="button">詳細を見る</a>
+                    </div>
                 </div>
 
                 <!-- メンバー紹介 -->
-                <div class="card animate">
-                    <h2>メンバー紹介</h2>
-                    <p>LinkedIn Student Club 3期生のメンバー</p>
-                    <a href="members.html" class="button">詳細を見る</a>
+                <div class="card animate-on-scroll">
+                    <div class="card__image">
+                        <img src="images/members.jpg" alt="メンバー紹介" data-src="images/members.jpg">
+                    </div>
+                    <div class="card__content">
+                        <h2>メンバー紹介</h2>
+                        <p>80名を超えるメンバーの挑戦と成長</p>
+                        <a href="members.html" class="button">詳細を見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aboutセクション -->
+    <section id="about" class="section section--dark">
+        <div class="container">
+            <h2 class="section__title animate-on-scroll">About LSC 3期生</h2>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <h3>キャリアアピール</h3>
+                    <p>一人ひとりが、自身の関わったプロジェクト、獲得したスキル、実績を具体的に示すポートフォリオとして活用し、就職活動やその後のキャリア形成における強力なアピール材料とします。</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <h3>イベント実績の最大化</h3>
+                    <p>最大規模のイベント「LinkedIn Student Career Week 2025」の成功を詳細かつ魅力的に報告し、その企画・実行能力、影響力を社内外に広く伝えます。</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <h3>コミュニティの記録と継承</h3>
+                    <p>80名を超えるメンバーと各グループの多様な活動、そしてそこで得られた学びや経験を体系的に記録し、次世代のLinkedIn Student Clubメンバーや関係者にとっての貴重な資産とします。</p>
                 </div>
             </div>
         </div>
@@ -90,8 +131,26 @@
     <!-- フッター -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 LinkedIn Student Club 3期生. All rights reserved.</p>
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <a href="/">LSC 3期生</a>
+                </div>
+                <nav class="footer__nav">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="career_week_2025.html">Career Week 2025</a></li>
+                        <li><a href="groups.html">グループ</a></li>
+                        <li><a href="members.html">メンバー</a></li>
+                    </ul>
+                </nav>
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/company/linkedin-student-club" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+            <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html> 
