@@ -1,5 +1,25 @@
 /* デザインシステム */
 :root {
+    /* メインカラー */
+    --primary-blue: #0077b5;
+    --primary-blue-light: #00a0dc;
+    --primary-blue-dark: #005582;
+    
+    /* アクセントカラー */
+    --accent-yellow: #ffd700;
+    --accent-orange: #ff8c00;
+    --accent-pink: #ff69b4;
+    
+    /* 背景色 */
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-lighter: #f0f2f5;
+    
+    /* テキストカラー */
+    --text-dark: #1a1a1a;
+    --text-gray: #666666;
+    --text-light: #888888;
+
     /* カラーパレット */
     --color-primary: #0077B5;    /* LinkedIn Blue */
     --color-primary-dark: #005582; /* ダークネイビー */
@@ -48,6 +68,16 @@
     /* アニメーション */
     --animation-duration: 0.3s;
     --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* LinkedInのブランドカラー */
+    --linkedin-blue: #0077b5;
+    --linkedin-blue-light: #00a0dc;
+    --linkedin-blue-dark: #005582;
+    --linkedin-gray: #f3f2ef;
+    --linkedin-gray-dark: #e8e6df;
+    --linkedin-text: #1a1a1a;
+    --linkedin-text-light: #666666;
+    --linkedin-white: #ffffff;
 }
 
 /* リセットとベーススタイル */
@@ -1424,68 +1454,98 @@ p {
 
 /* チームカード */
 .team-card {
-    background: #fff;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-white);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 119, 181, 0.08);
+    transition: all 0.3s ease;
     cursor: pointer;
+    border: 1px solid rgba(0, 119, 181, 0.1);
 }
 
 .team-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 119, 181, 0.15);
+    border-color: var(--primary-blue-light);
 }
 
 .team-card h3 {
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.team-card h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: var(--accent-yellow);
+    border-radius: 2px;
+}
+
+.team-description {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
 }
 
 .team-members {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
 .team-member {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    background: var(--bg-lighter);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .team-member:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.1);
+    background: var(--bg-white);
+    border: 1px solid var(--primary-blue-light);
 }
 
 .team-member img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid var(--primary-blue-light);
+    box-shadow: 0 3px 10px rgba(0, 119, 181, 0.1);
 }
 
 .team-member h4 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
-    color: #1a1a1a;
+    margin: 0 0 0.3rem;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    font-weight: 600;
 }
 
 .team-member__role {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    margin: 0 0 0.3rem;
 }
 
 .team-member__university {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 0.9rem;
+    color: var(--text-light);
     margin: 0;
 }
 
@@ -1503,6 +1563,19 @@ p {
     .team-member img {
         width: 120px;
         height: 120px;
+    }
+
+    .popup__content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .popup__members {
+        grid-template-columns: 1fr;
+    }
+
+    .team-members {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -2060,7 +2133,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2068,6 +2141,7 @@ p {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
 .popup--active {
@@ -2076,29 +2150,46 @@ p {
 }
 
 .popup__content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 1rem;
+    background: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
     max-width: 800px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 119, 181, 0.1);
+    border: 1px solid rgba(0, 119, 181, 0.1);
 }
 
 .popup__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--bg-lighter);
 }
 
 .popup__title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--primary-blue);
     margin: 0;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.popup__title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: var(--accent-yellow);
+    border-radius: 2px;
 }
 
 .popup__close {
@@ -2106,103 +2197,142 @@ p {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #666;
-    transition: color 0.3s ease;
+    color: var(--primary-blue);
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .popup__close:hover {
-    color: #1a1a1a;
+    background: var(--bg-lighter);
+    color: var(--primary-blue-dark);
 }
 
 .popup__body {
-    color: #333;
+    color: var(--text-dark);
 }
 
 .popup__description {
     margin-bottom: 2rem;
-    line-height: 1.6;
-    color: #444;
+    line-height: 1.8;
+    color: var(--text-gray);
+    font-size: 1.1rem;
 }
 
 .popup__members {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
 .popup__member {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    background: var(--bg-lighter);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
 }
 
 .popup__member:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.1);
+    background: var(--bg-white);
+    border: 1px solid var(--primary-blue-light);
 }
 
 .popup__member-image {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid var(--primary-blue-light);
+    box-shadow: 0 3px 10px rgba(0, 119, 181, 0.1);
 }
 
 .popup__member-info h3 {
     margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-    color: #1a1a1a;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    font-weight: 600;
 }
 
 .popup__member-info p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.5;
 }
 
 /* メンバーポップアップのスタイル */
 .popup__image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 2rem;
     display: block;
     object-fit: cover;
+    border: 4px solid var(--primary-blue-light);
+    box-shadow: 0 5px 20px rgba(0, 119, 181, 0.15);
 }
 
 .popup__info {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .popup__role {
-    font-size: 1.1rem;
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.popup__role::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--accent-yellow);
+    border-radius: 2px;
 }
 
 .popup__university {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-top: 0.5rem;
 }
 
 .popup__linkedin {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: #0077b5;
-    color: #fff;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: var(--primary-blue);
+    color: var(--bg-white);
     text-decoration: none;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
 }
 
 .popup__linkedin:hover {
-    background: #005582;
+    background: var(--primary-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.3);
 }
 
 /* アニメーション */
