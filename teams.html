@@ -51,75 +51,71 @@
             
             <div class="team-grid">
                 <!-- チームA -->
-                <div class="team-card">
+                <div class="team-card" data-team="team-a">
                     <h3>チームA</h3>
-                    <p>イベント企画・運営を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="西堀怜" class="member__image">
-                            <div class="member__info">
-                                <h4>西堀 怜</h4>
-                                <p>リーダー</p>
-                                <p>立教大学 経営学部 国際経営学科</p>
+                    <p class="team-description">
+                        イベント企画・運営を担当するチームです。Career Week 2025の全体設計から、各セッションの企画、当日の運営までを一貫して行います。参加者の体験を最重視し、価値ある学びの場を提供します。
+                    </p>
+                    <div class="team-members">
+                        <div class="team-member" data-member="nishibori-rei">
+                            <img src="images/members/default.jpg" alt="西堀怜" class="team-member__image">
+                            <div class="team-member__info">
+                                <h4>西堀怜</h4>
+                                <p class="team-member__role">Team A Leader</p>
+                                <p class="team-member__university">早稲田大学 政治経済学部 4年</p>
                             </div>
                         </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="山本歩実" class="member__image">
-                            <div class="member__info">
-                                <h4>山本 歩実</h4>
-                                <p>サブリーダー</p>
-                                <p>東京大学 前期教養学部 文科二類</p>
+                        <div class="team-member" data-member="yamamoto-ayumi">
+                            <img src="images/members/default.jpg" alt="山本歩実" class="team-member__image">
+                            <div class="team-member__info">
+                                <h4>山本歩実</h4>
+                                <p class="team-member__role">Team A Sub-Leader</p>
+                                <p class="team-member__university">早稲田大学 政治経済学部 4年</p>
                             </div>
                         </div>
-                        <!-- 他のメンバーも同様に追加 -->
                     </div>
                 </div>
 
                 <!-- チームB -->
                 <div class="team-card">
                     <h3>チームB</h3>
-                    <p>企業連携・渉外を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="茂木大晟" class="member__image">
-                            <div class="member__info">
-                                <h4>茂木 大晟</h4>
-                                <p>リーダー</p>
-                                <p>立教大学 経営学部 国際経営学科</p>
+                    <p class="team-description">
+                        企業との連携を担当するチームです。Career Week 2025の参加企業の開拓、関係構築、プログラムの調整を行います。企業と学生をつなぐ架け橋として、双方にとって価値ある関係性を構築します。
+                    </p>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <img src="images/members/default.jpg" alt="山田太郎" class="team-member__image">
+                            <div class="team-member__info">
+                                <h4>山田太郎</h4>
+                                <p class="team-member__role">Team B Leader</p>
+                                <p class="team-member__university">東京大学 工学部 4年</p>
                             </div>
                         </div>
-                        <!-- 他のメンバーも同様に追加 -->
                     </div>
                 </div>
 
                 <!-- チームC -->
                 <div class="team-card">
                     <h3>チームC</h3>
-                    <p>コンテンツ制作・編集を担当するチーム</p>
-                    <div class="member-list">
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="武井佑太" class="member__image">
-                            <div class="member__info">
-                                <h4>武井 佑太</h4>
-                                <p>リーダー</p>
-                                <p>慶應義塾大学 経済学部 経済学科</p>
+                    <p class="team-description">
+                        広報・マーケティングを担当するチームです。Career Week 2025の認知度向上、参加者募集、SNS運用を行います。効果的な情報発信を通じて、多くの学生に価値ある機会を提供します。
+                    </p>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <img src="images/members/default.jpg" alt="佐藤花子" class="team-member__image">
+                            <div class="team-member__info">
+                                <h4>佐藤花子</h4>
+                                <p class="team-member__role">Team C Leader</p>
+                                <p class="team-member__university">慶應義塾大学 商学部 4年</p>
                             </div>
                         </div>
-                        <div class="member">
-                            <img src="images/members/default.jpg" alt="植村広紀" class="member__image">
-                            <div class="member__info">
-                                <h4>植村 広紀</h4>
-                                <p>サブリーダー</p>
-                                <p>慶應義塾大学 法学部 政治学科</p>
-                            </div>
-                        </div>
-                        <!-- 他のメンバーも同様に追加 -->
                     </div>
                 </div>
 
                 <!-- チームE -->
                 <div class="team-card">
                     <h3>チームE</h3>
+                    <p class="team-description">
                     <p>グローバル展開・国際交流を担当するチーム</p>
                     <div class="member-list">
                         <div class="member">
@@ -252,6 +248,113 @@
         </div>
     </footer>
 
+    <!-- ポップアップ -->
+    <div class="popup" id="team-popup">
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <div class="popup__header">
+                <h2 class="popup__title"></h2>
+            </div>
+            <div class="popup__body">
+                <div class="popup__description"></div>
+                <div class="popup__members"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="member-popup">
+        <div class="popup__content">
+            <button class="popup__close">&times;</button>
+            <div class="popup__header">
+                <img src="" alt="" class="popup__image">
+                <h2 class="popup__title"></h2>
+            </div>
+            <div class="popup__body">
+                <div class="popup__info"></div>
+                <div class="popup__description"></div>
+                <a href="#" class="popup__linkedin" target="_blank" rel="noopener noreferrer">
+                    LinkedInプロフィールを見る
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // チームカードのクリックイベント
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const teamId = this.dataset.team;
+                const popup = document.getElementById('team-popup');
+                const title = this.querySelector('h3').textContent;
+                const description = this.querySelector('.team-description').textContent;
+                const members = Array.from(this.querySelectorAll('.team-member')).map(member => ({
+                    name: member.querySelector('h4').textContent,
+                    role: member.querySelector('.team-member__role').textContent,
+                    university: member.querySelector('.team-member__university').textContent,
+                    image: member.querySelector('img').src
+                }));
+
+                popup.querySelector('.popup__title').textContent = title;
+                popup.querySelector('.popup__description').textContent = description;
+                
+                const membersHtml = members.map(member => `
+                    <div class="popup__member">
+                        <img src="${member.image}" alt="${member.name}" class="popup__member-image">
+                        <div class="popup__member-info">
+                            <h3>${member.name}</h3>
+                            <p>${member.role}</p>
+                            <p>${member.university}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                popup.querySelector('.popup__members').innerHTML = membersHtml;
+                popup.classList.add('popup--active');
+            });
+        });
+
+        // メンバーカードのクリックイベント
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const memberId = this.dataset.member;
+                const popup = document.getElementById('member-popup');
+                const name = this.querySelector('h4').textContent;
+                const role = this.querySelector('.team-member__role').textContent;
+                const university = this.querySelector('.team-member__university').textContent;
+                const image = this.querySelector('img').src;
+
+                popup.querySelector('.popup__image').src = image;
+                popup.querySelector('.popup__image').alt = name;
+                popup.querySelector('.popup__title').textContent = name;
+                popup.querySelector('.popup__info').innerHTML = `
+                    <p class="popup__role">${role}</p>
+                    <p class="popup__university">${university}</p>
+                `;
+                popup.querySelector('.popup__linkedin').href = `https://www.linkedin.com/in/${memberId}/`;
+                
+                popup.classList.add('popup--active');
+            });
+        });
+
+        // ポップアップを閉じる
+        document.querySelectorAll('.popup__close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.popup').classList.remove('popup--active');
+            });
+        });
+
+        // ポップアップ外をクリックして閉じる
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('popup--active');
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html> 

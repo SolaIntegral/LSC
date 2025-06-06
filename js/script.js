@@ -510,4 +510,111 @@ inputs.forEach(input => {
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
     animateNumbers();
-}); 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // チームカードのクリックイベント
+    document.querySelectorAll('.team-card').forEach(card => {
+        // カード全体のクリックイベント
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('.team-member')) {
+                showTeamPopup(this);
+            }
+        });
+
+        // チーム名のクリックイベント
+        const teamTitle = card.querySelector('h3');
+        if (teamTitle) {
+            teamTitle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showTeamPopup(this.closest('.team-card'));
+            });
+        }
+    });
+
+    // メンバーカードのクリックイベント
+    document.querySelectorAll('.team-member').forEach(member => {
+        // カード全体のクリックイベント
+        member.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showMemberPopup(this);
+        });
+
+        // メンバー名のクリックイベント
+        const memberName = member.querySelector('h4');
+        if (memberName) {
+            memberName.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showMemberPopup(this.closest('.team-member'));
+            });
+        }
+    });
+
+    // ポップアップを閉じる
+    document.querySelectorAll('.popup__close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            this.closest('.popup').classList.remove('popup--active');
+        });
+    });
+
+    // ポップアップ外をクリックして閉じる
+    document.querySelectorAll('.popup').forEach(popup => {
+        popup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('popup--active');
+            }
+        });
+    });
+});
+
+// チームポップアップを表示する関数
+function showTeamPopup(teamCard) {
+    const teamId = teamCard.dataset.team;
+    const popup = document.getElementById('team-popup');
+    const title = teamCard.querySelector('h3').textContent;
+    const description = teamCard.querySelector('.team-description').textContent;
+    const members = Array.from(teamCard.querySelectorAll('.team-member')).map(member => ({
+        name: member.querySelector('h4').textContent,
+        role: member.querySelector('.team-member__role').textContent,
+        university: member.querySelector('.team-member__university').textContent,
+        image: member.querySelector('img').src
+    }));
+
+    popup.querySelector('.popup__title').textContent = title;
+    popup.querySelector('.popup__description').textContent = description;
+    
+    const membersHtml = members.map(member => `
+        <div class="popup__member">
+            <img src="${member.image}" alt="${member.name}" class="popup__member-image">
+            <div class="popup__member-info">
+                <h3>${member.name}</h3>
+                <p>${member.role}</p>
+                <p>${member.university}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    popup.querySelector('.popup__members').innerHTML = membersHtml;
+    popup.classList.add('popup--active');
+}
+
+// メンバーポップアップを表示する関数
+function showMemberPopup(memberCard) {
+    const memberId = memberCard.dataset.member;
+    const popup = document.getElementById('member-popup');
+    const name = memberCard.querySelector('h4').textContent;
+    const role = memberCard.querySelector('.team-member__role').textContent;
+    const university = memberCard.querySelector('.team-member__university').textContent;
+    const image = memberCard.querySelector('img').src;
+
+    popup.querySelector('.popup__image').src = image;
+    popup.querySelector('.popup__image').alt = name;
+    popup.querySelector('.popup__title').textContent = name;
+    popup.querySelector('.popup__info').innerHTML = `
+        <p class="popup__role">${role}</p>
+        <p class="popup__university">${university}</p>
+    `;
+    popup.querySelector('.popup__linkedin').href = `https://www.linkedin.com/in/${memberId}/`;
+    
+    popup.classList.add('popup--active');
+} 
