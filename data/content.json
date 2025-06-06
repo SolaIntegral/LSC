@@ -1,0 +1,127 @@
+{
+    "hero": {
+        "title": "LinkedIn Student Club 3期生",
+        "subtitle": "学生の可能性を最大限に引き出す",
+        "backgroundImage": "images/hero/hero-bg.jpg"
+    },
+    "highlights": [
+        {
+            "number": 4000,
+            "label": "来場者数",
+            "icon": "images/icons/attendees.svg"
+        },
+        {
+            "number": 50,
+            "label": "セッション数",
+            "icon": "images/icons/sessions.svg"
+        },
+        {
+            "number": 30,
+            "label": "参加企業数",
+            "icon": "images/icons/companies.svg"
+        }
+    ],
+    "careerWeek": {
+        "title": "LinkedIn Student Career Week 2025",
+        "subtitle": "学生と企業をつなぐ、最大規模のキャリアイベント",
+        "date": "2025年3月15日（土）・16日（日）",
+        "venue": "東京国際フォーラム",
+        "theme": "「未来を創る、学生の挑戦」",
+        "gallery": [
+            {
+                "image": "images/events/keynote.jpg",
+                "caption": "基調講演の様子"
+            },
+            {
+                "image": "images/events/booth.jpg",
+                "caption": "企業ブースの様子"
+            },
+            {
+                "image": "images/events/workshop.jpg",
+                "caption": "ワークショップの様子"
+            }
+        ],
+        "timeline": [
+            {
+                "title": "企画",
+                "description": "学生のニーズと企業の期待を分析し、イベントのコンセプトを策定"
+            },
+            {
+                "title": "準備",
+                "description": "企業との交渉、会場の確保、プログラムの作成"
+            },
+            {
+                "title": "実施",
+                "description": "当日の運営、参加者のサポート、企業との連携"
+            },
+            {
+                "title": "結果",
+                "description": "参加者の満足度調査、企業からのフィードバック、次回への改善点の洗い出し"
+            }
+        ]
+    },
+    "groups": [
+        {
+            "name": "イベント企画グループ",
+            "description": "Career Week 2025の企画・運営を担当。学生と企業をつなぐ大規模イベントの成功に向けて活動しています。",
+            "image": "images/groups/event-planning.jpg",
+            "activities": [
+                "イベントのコンセプト策定",
+                "企業との交渉",
+                "プログラムの作成",
+                "当日の運営"
+            ]
+        },
+        {
+            "name": "マーケティンググループ",
+            "description": "SNS運用、広報活動、コンテンツ制作を担当。LinkedIn Student Clubの認知度向上に貢献しています。",
+            "image": "images/groups/marketing.jpg",
+            "activities": [
+                "SNS戦略の立案",
+                "コンテンツ制作",
+                "広報活動",
+                "コミュニティ運営"
+            ]
+        },
+        {
+            "name": "企業連携グループ",
+            "description": "企業とのパートナーシップ構築を担当。学生と企業の架け橋として活動しています。",
+            "image": "images/groups/corporate.jpg",
+            "activities": [
+                "企業との関係構築",
+                "パートナーシップの提案",
+                "企業向けイベントの企画",
+                "フィードバックの収集"
+            ]
+        },
+        {
+            "name": "コンテンツ制作グループ",
+            "description": "動画制作、記事執筆、デザイン制作を担当。質の高いコンテンツを提供しています。",
+            "image": "images/groups/content.jpg",
+            "activities": [
+                "動画制作",
+                "記事執筆",
+                "デザイン制作",
+                "コンテンツ戦略の立案"
+            ]
+        }
+    ],
+    "members": [
+        {
+            "name": "山田 太郎",
+            "group": "イベント企画",
+            "image": "images/members/member1.jpg",
+            "bio": "イベント企画グループのリーダーとして、Career Week 2025の成功に向けて奮闘中。",
+            "linkedin": "https://linkedin.com/in/example1",
+            "skills": ["イベント企画", "プロジェクト管理", "リーダーシップ"]
+        },
+        {
+            "name": "佐藤 花子",
+            "group": "マーケティング",
+            "image": "images/members/member2.jpg",
+            "bio": "SNS戦略の立案から実行まで、幅広いマーケティング活動を担当。",
+            "linkedin": "https://linkedin.com/in/example2",
+            "skills": ["SNS運用", "コンテンツ制作", "データ分析"]
+        }
+    ]
+} 

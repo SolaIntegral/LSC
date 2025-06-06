@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンバー紹介 - LinkedIn Student Club 3期生</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <h1>LinkedIn Student Club 3期生</h1>
+            </div>
+            <nav class="header__nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">ホーム</a></li>
+                    <li class="nav__item"><a href="career_week_2025.html" class="nav__link">Career Week 2025</a></li>
+                    <li class="nav__item"><a href="groups.html" class="nav__link">グループ</a></li>
+                    <li class="nav__item"><a href="members.html" class="nav__link">メンバー</a></li>
+                </ul>
+            </nav>
+            <button class="header__menu-button" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="members-hero">
+            <div class="members-hero__content">
+                <h2 class="members-hero__title">メンバー紹介</h2>
+                <p class="members-hero__subtitle">個性豊かなメンバーの活躍</p>
+            </div>
+        </section>
+
+        <section class="members-search">
+            <div class="members-search__container">
+                <div class="search-box">
+                    <input type="text" id="memberSearch" placeholder="メンバーを検索..." class="search-box__input">
+                </div>
+                <div class="filter-box">
+                    <select id="groupFilter" class="filter-box__select">
+                        <option value="">全てのグループ</option>
+                        <option value="イベント企画">イベント企画グループ</option>
+                        <option value="マーケティング">マーケティンググループ</option>
+                        <option value="企業連携">企業連携グループ</option>
+                        <option value="コンテンツ制作">コンテンツ制作グループ</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="members-grid">
+            <div class="members-grid__container">
+                <!-- メンバーカードの例（実際のデータに置き換える） -->
+                <div class="member-card" data-group="イベント企画">
+                    <div class="member-card__image">
+                        <img src="images/placeholder-member.jpg" alt="メンバー1">
+                    </div>
+                    <div class="member-card__content">
+                        <h3 class="member-card__name">山田 太郎</h3>
+                        <p class="member-card__group">イベント企画グループ</p>
+                        <div class="member-card__skills">
+                            <span class="skill-tag">イベント企画</span>
+                            <span class="skill-tag">プロジェクト管理</span>
+                        </div>
+                        <button class="member-card__toggle">詳細を見る</button>
+                    </div>
+                    <div class="member-card__details">
+                        <p class="member-card__bio">イベント企画グループのリーダーとして、Career Week 2025の成功に向けて奮闘中。</p>
+                        <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer" class="member-card__linkedin">LinkedInプロフィール</a>
+                    </div>
+                </div>
+
+                <div class="member-card" data-group="マーケティング">
+                    <div class="member-card__image">
+                        <img src="images/placeholder-member.jpg" alt="メンバー2">
+                    </div>
+                    <div class="member-card__content">
+                        <h3 class="member-card__name">佐藤 花子</h3>
+                        <p class="member-card__group">マーケティンググループ</p>
+                        <div class="member-card__skills">
+                            <span class="skill-tag">SNS運用</span>
+                            <span class="skill-tag">コンテンツ制作</span>
+                        </div>
+                        <button class="member-card__toggle">詳細を見る</button>
+                    </div>
+                    <div class="member-card__details">
+                        <p class="member-card__bio">SNS戦略の立案から実行まで、幅広いマーケティング活動を担当。</p>
+                        <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer" class="member-card__linkedin">LinkedInプロフィール</a>
+                    </div>
+                </div>
+
+                <!-- 他のメンバーカードも同様に追加 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <p class="footer__copyright">&copy; 2024 LinkedIn Student Club 3期生</p>
+                <div class="footer__links">
+                    <a href="https://www.linkedin.com/company/linkedin-japan/" target="_blank" rel="noopener noreferrer">LinkedIn Japan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
