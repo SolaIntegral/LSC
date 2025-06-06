@@ -217,15 +217,17 @@ p {
     background: var(--white);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    height: 60px;
 }
 
 .nav__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    height: 100%;
 }
 
 .nav__logo {
@@ -233,6 +235,7 @@ p {
     font-weight: 700;
     color: var(--linkedin-blue);
     text-decoration: none;
+    z-index: 1001;
 }
 
 .nav__menu {
@@ -248,6 +251,7 @@ p {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav__link:hover {
@@ -1986,11 +1990,9 @@ p {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -2698,4 +2700,344 @@ p {
     .team-members {
         grid-template-columns: repeat(2, 1fr);
     }
-} 
+}
+
+/* アニメーション用のキーフレーム */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* アニメーション用のクラス */
+.animate {
+    opacity: 0;
+}
+
+.animate--fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate--fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.animate--slide-in-left {
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.animate--slide-in-right {
+    animation: slideInRight 0.6s ease forwards;
+}
+
+/* アニメーションの遅延 */
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Aboutページのアニメーション */
+.about__hero {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.about__mission {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.about__vision {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.about__values {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.7s;
+}
+
+.about__history {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.9s;
+}
+
+/* Career Week 2025ページのアニメーション */
+.career-week__hero {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.career-week__overview {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.career-week__schedule {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.career-week__companies {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.7s;
+}
+
+.career-week__apply {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.9s;
+}
+
+/* スクロールアニメーション */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate--active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* チームページのレイアウト */
+.teams {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.teams .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* チームカード */
+.team-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--linkedin-gray);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--linkedin-blue);
+}
+
+.team-card h3 {
+    font-size: 1.5rem;
+    color: var(--linkedin-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--linkedin-blue-light);
+    display: inline-block;
+}
+
+.team-description {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* メンバーグリッド */
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* メンバーカード */
+.team-member {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--linkedin-gray);
+    cursor: pointer;
+}
+
+.team-member:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--linkedin-blue);
+}
+
+.team-member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    border: 2px solid var(--linkedin-blue-light);
+}
+
+.team-member h4 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* チームカテゴリー */
+.team-category {
+    margin-bottom: 3rem;
+}
+
+.team-category h2 {
+    font-size: 1.8rem;
+    color: var(--linkedin-blue);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--linkedin-blue-light);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .teams {
+        padding: 2rem 0;
+    }
+
+    .team-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .team-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .team-members {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .team-member {
+        padding: 0.8rem;
+    }
+
+    .team-member img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .team-member h4 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-members {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .team-member {
+        padding: 0.5rem;
+    }
+
+    .team-member img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .team-member h4 {
+        font-size: 0.8rem;
+    }
+}
+
+/* アニメーション */
+.team-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.2s; }
+.team-card:nth-child(3) { animation-delay: 0.3s; }
+.team-card:nth-child(4) { animation-delay: 0.4s; }
+.team-card:nth-child(5) { animation-delay: 0.5s; }
+.team-card:nth-child(6) { animation-delay: 0.6s; }
+.team-card:nth-child(7) { animation-delay: 0.7s; }
+.team-card:nth-child(8) { animation-delay: 0.8s; }
+
+.team-member {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.team-card:hover .team-member {
+    animation: scaleIn 0.3s ease forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// ... existing code ...

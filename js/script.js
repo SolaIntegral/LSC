@@ -130,27 +130,70 @@ document.querySelectorAll('.member-card__toggle').forEach(button => {
 // ハンバーガーメニューの制御
 const navToggle = document.querySelector('.nav__toggle');
 const navMenu = document.querySelector('.nav__menu');
+const body = document.body;
 
-navToggle.addEventListener('click', () => {
+// メニューの開閉
+function toggleMenu() {
     navToggle.classList.toggle('nav__toggle--active');
     navMenu.classList.toggle('nav__menu--active');
+    body.classList.toggle('menu-open');
+}
+
+// メニューを閉じる
+function closeMenu() {
+    navToggle.classList.remove('nav__toggle--active');
+    navMenu.classList.remove('nav__menu--active');
+    body.classList.remove('menu-open');
+}
+
+// イベントリスナー
+navToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMenu();
 });
 
 // メニューリンクをクリックしたときにメニューを閉じる
 document.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('nav__toggle--active');
-        navMenu.classList.remove('nav__menu--active');
-    });
+    link.addEventListener('click', closeMenu);
 });
 
-// 画面外をクリックしたときにメニューを閉じる
+// メニュー外をクリックしたときにメニューを閉じる
 document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navToggle.classList.remove('nav__toggle--active');
-        navMenu.classList.remove('nav__menu--active');
+    if (navMenu.classList.contains('nav__menu--active') && 
+        !navMenu.contains(e.target) && 
+        !navToggle.contains(e.target)) {
+        closeMenu();
     }
 });
+
+// タッチデバイスでのスワイプ検出
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance > 0 && navMenu.classList.contains('nav__menu--active')) {
+            // 右スワイプでメニューを閉じる
+            closeMenu();
+        } else if (swipeDistance < 0 && !navMenu.classList.contains('nav__menu--active')) {
+            // 左スワイプでメニューを開く
+            toggleMenu();
+        }
+    }
+}
 
 // スクロール時のヘッダー表示制御
 let currentScrollTop = 0;
@@ -184,25 +227,52 @@ if (isTouchDevice) {
 }
 
 // スクロールアニメーション
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+const scrollElements = document.querySelectorAll('.scroll-animate');
 
-    elements.forEach(element => {
-        observer.observe(element);
+const elementInView = (el, percentageScroll = 100) => {
+    const elementTop = el.getBoundingClientRect().top;
+    return (
+        elementTop <= 
+        ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+    );
+};
+
+const displayScrollElement = (element) => {
+    element.classList.add('scroll-animate--active');
+};
+
+const hideScrollElement = (element) => {
+    element.classList.remove('scroll-animate--active');
+};
+
+const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+        if (elementInView(el, 100)) {
+            displayScrollElement(el);
+        } else {
+            hideScrollElement(el);
+        }
     });
 };
+
+// スクロールイベントの最適化
+let throttleTimer;
+const throttle = (callback, time) => {
+    if (throttleTimer) return;
+    throttleTimer = setTimeout(() => {
+        callback();
+        throttleTimer = null;
+    }, time);
+};
+
+window.addEventListener('scroll', () => {
+    throttle(handleScrollAnimation, 250);
+});
+
+// 初期表示時のアニメーション
+window.addEventListener('load', () => {
+    handleScrollAnimation();
+});
 
 // カウントアップアニメーション
 const animateCount = (element, target, duration = 2000) => {
@@ -492,7 +562,6 @@ inputs.forEach(input => {
 
 // 初期化
 document.addEventListener('DOMContentLoaded', () => {
-    animateOnScroll();
     animateNumbers();
 });
 
